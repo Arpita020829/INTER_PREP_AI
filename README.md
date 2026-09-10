@@ -1,5 +1,5 @@
 <div align="center">
-
+ 
 # AI Interview Preparation Platform
 
 ### _Your Smart Partner for Acing Every Interview_
@@ -15,6 +15,8 @@
 ---
 
 A full-stack, AI-powered web application that helps candidates prepare for technical and HR interviews. It leverages HuggingFace LLMs to generate questions, simulate interviews, analyze resumes, and track progress.
+
+
 
 ---
 
