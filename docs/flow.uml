@@ -1,0 +1,119 @@
+@startuml
+
+left to right direction
+
+skinparam packageStyle rectangle
+skinparam shadowing false
+skinparam linetype ortho
+skinparam nodesep 35
+skinparam ranksep 45
+
+actor Guest
+actor "Registered User" as User
+actor Administrator as Admin
+actor "HuggingFace AI" as AI
+
+rectangle "AI Interview Preparation Platform" {
+
+    package "Authentication & Profile" as AUTH {
+        usecase "View Landing Page" as Landing
+        usecase "Register" as Register
+        usecase "Login" as Login
+        usecase "Update Profile" as Profile
+    }
+
+    package "AI Interview" as INTERVIEW {
+        usecase "Start Interview" as Start
+        usecase "Generate Questions" as Generate
+        usecase "Submit Answer" as Submit
+        usecase "View AI Feedback" as Feedback
+        usecase "Use Voice Input" as Voice
+    }
+
+    package "Question Bank" as QB {
+        usecase "Browse Questions" as Browse
+        usecase "Filter Questions" as Filter
+        usecase "Search Questions" as Search
+    }
+
+    package "Resume Analysis" as RESUME {
+        usecase "Upload Resume" as Upload
+        usecase "Parse PDF" as Parse
+        usecase "ATS Analysis" as ATS
+        usecase "View Resume History" as History
+    }
+
+    package "Progress Tracking" as PROGRESS {
+        usecase "View Progress Dashboard" as Dashboard
+        usecase "Topic Performance" as Topic
+        usecase "Weak Areas" as Weak
+        usecase "Study Streak" as Streak
+    }
+
+    package "Mock Interviews" as MOCK {
+        usecase "Schedule Mock Interview" as Schedule
+        usecase "View Upcoming Sessions" as Upcoming
+    }
+
+    package "Administration" as ADMIN {
+        usecase "Manage Question Bank" as ManageQB
+        usecase "Manage Users" as ManageUsers
+        usecase "Configure AI Model" as ConfigureAI
+    }
+}
+
+' ================= ACTORS =================
+
+Guest --> Landing
+Guest --> Register
+Guest --> Login
+
+User --> Login
+User --> Profile
+User --> Start
+User --> Browse
+User --> Upload
+User --> Dashboard
+User --> Schedule
+User --> History
+
+Admin --> ManageQB
+Admin --> ManageUsers
+Admin --> ConfigureAI
+
+' ================= INTERVIEW =================
+
+Start ..> Generate : <<include>>
+Start ..> Submit : <<include>>
+Start ..> Feedback : <<include>>
+Voice ..> Submit : <<extend>>
+
+Generate --> AI
+Feedback --> AI
+
+' ================= QUESTION BANK =================
+
+Filter ..> Browse : <<extend>>
+Search ..> Browse : <<extend>>
+
+' ================= RESUME =================
+
+Upload ..> Parse : <<include>>
+Upload ..> ATS : <<include>>
+ATS --> AI
+
+' ================= PROGRESS =================
+
+Dashboard ..> Topic : <<include>>
+Dashboard ..> Weak : <<include>>
+Dashboard ..> Streak : <<include>>
+
+' ================= MOCK INTERVIEW =================
+
+Upcoming ..> Schedule : <<extend>>
+
+' ================= ADMIN =================
+
+ConfigureAI --> AI
+
+@enduml
