@@ -1,4 +1,4 @@
-# Software Requirements Specification (SRS)
+# Software Requirements Specification (SRS) 
 ## AI Interview Preparation Platform
 
 **Document Version:** 1.0  
@@ -299,6 +299,6 @@ All requests and responses use `Content-Type: application/json`. File uploads us
 | Browser | Voice input requires browser microphone permission grant |
 | Environment | Node.js 18+ required for backend runtime |
 
----
+--- 
 
 *End of SRS Document*
