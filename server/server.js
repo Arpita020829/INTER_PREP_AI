@@ -51,7 +51,7 @@ app.use('/api/health', healthRoutes);
 app.use('/api/auth', authRoutes);
 
 // 404 handler for unmatched routes
-app.use('*', (req, res) => {
+app.use('/{*path}', (req, res) => {
   res.status(404).json({
     success: false,
     message: `Route ${req.originalUrl} not found`,
