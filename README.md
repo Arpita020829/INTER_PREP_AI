@@ -16,6 +16,8 @@
 
 A full-stack, AI-powered web application that helps candidates prepare for technical and HR interviews. It leverages HuggingFace LLMs to generate questions, simulate interviews, analyze resumes, and track progress.
 
+
+
 ---
 
 ## Documentation
